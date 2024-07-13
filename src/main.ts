@@ -17,17 +17,14 @@ interface StateStepperReturn<Name extends string> {
     };
     next: () => void;
     previous: () => void;
-    name: string | undefined;
 }
 
-interface UseStateStepperProps<Name extends string> extends UseStepProps<Name> {
-    name?: string;
-}
+interface UseStateStepperProps<Name extends string>
+    extends UseStepProps<Name> {}
 
 export const useStateStepper = <Name extends string>({
     steps,
     loop,
-    name,
 }: UseStateStepperProps<Name>): StateStepperReturn<Name> => {
     const [step, next, previous] = useStepState({ steps, loop });
     const current = getStep({ steps, current: step });
@@ -47,6 +44,5 @@ export const useStateStepper = <Name extends string>({
         },
         next,
         previous,
-        name,
     };
 };
