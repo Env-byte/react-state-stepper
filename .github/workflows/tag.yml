@@ -47,8 +47,8 @@ jobs:
           npm version patch
           VERSION=$(node -p "require('./package.json').version")
           git tag ${VERSION}
-          git push "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --follow-tags
-          git push "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --tags
+          git push --follow-tags
+          git push --tags
 
       - name: Upload Build
         uses: actions/upload-artifact@v4
