@@ -8,10 +8,13 @@ on:
 concurrency: deploy
 
 jobs:
-  apply:
+  publish:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    environment: aws
+    environment: node
+    permissions:
+      contents: 'read'
+      id-token: 'write'
     steps:
       - uses: actions/checkout@v4
 
