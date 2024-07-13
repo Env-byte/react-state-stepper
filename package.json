@@ -1,8 +1,9 @@
 {
   "name": "state-stepper",
   "version": "1.0.0",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "private": false,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c --bundleConfigAsCjs",
@@ -11,10 +12,14 @@
   "engines": {
     "node": "20"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "state",
+    "stepper"
+  ],
+  "author": "Env-byte",
   "license": "ISC",
-  "description": "",
+  "description": "A simple state stepper component for React, which is manually or timer controlled",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
