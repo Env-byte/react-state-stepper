@@ -1,7 +1,6 @@
 import {
     getStep,
     getStepByOffset,
-    getStepName,
     isStepObject,
     StepConfig,
     UseStepProps,
@@ -18,14 +17,17 @@ interface StateStepperReturn<Name extends string> {
     };
     next: () => void;
     previous: () => void;
+    name: string | undefined;
 }
 
-interface UseStateStepperProps<Name extends string>
-    extends UseStepProps<Name> {}
+interface UseStateStepperProps<Name extends string> extends UseStepProps<Name> {
+    name?: string;
+}
 
 export const useStateStepper = <Name extends string>({
     steps,
     loop,
+    name,
 }: UseStateStepperProps<Name>): StateStepperReturn<Name> => {
     const [step, next, previous] = useStepState({ steps, loop });
     const current = getStep({ steps, current: step });
@@ -45,5 +47,6 @@ export const useStateStepper = <Name extends string>({
         },
         next,
         previous,
+        name,
     };
 };
