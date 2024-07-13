@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ssh-key: ${{secrets.TAG_SECRET}}
 
       - name: Download Assets
         uses: dawidd6/action-download-artifact@v2
