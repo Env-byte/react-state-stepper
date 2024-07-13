@@ -1,13 +1,13 @@
 import terser from '@rollup/plugin-terser';
 import typescript from '@rollup/plugin-typescript';
 import del from 'rollup-plugin-delete';
-import {dts} from 'rollup-plugin-dts';
+import { dts } from 'rollup-plugin-dts';
 
 const config = [
     {
         input: ['./src/index.ts'],
         output: {
-            file: 'lib/index.js',
+            file: 'build/index.js',
             format: 'es',
             sourcemap: true,
             compact: true,
@@ -16,7 +16,7 @@ const config = [
             typescript({
                 tsconfig: './tsconfig.json',
                 declaration: true,
-                declarationDir: 'lib',
+                declarationDir: 'build',
             }),
             terser(),
         ],
@@ -33,11 +33,17 @@ const config = [
         ],
     },
     {
-        input: './lib/index.d.ts',
-        output: [{file: 'lib/index.d.ts', format: 'esm'}],
-        plugins: [dts(), del({targets: 'lib/**/!(*.js|*.map)', verbose: true, hook: 'buildEnd'})],
+        input: './build/index.d.ts',
+        output: [{ file: 'build/index.d.ts', format: 'esm' }],
+        plugins: [
+            dts(),
+            del({
+                targets: 'build/**/!(*.js|*.map)',
+                verbose: true,
+                hook: 'buildEnd',
+            }),
+        ],
         external: [/\.scss$/], // ignore .scss file
     },
 ];
 export default config;
-
