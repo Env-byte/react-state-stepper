@@ -9,6 +9,7 @@
     "build": "rollup -c --bundleConfigAsCjs",
     "dev": "nodemon --exec 'npm run build' --watch src --ext ts"
   },
+  "url": "https://github.com/Env-byte/react-state-stepper",
   "engines": {
     "node": "20"
   },
