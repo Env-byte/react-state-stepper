@@ -9,7 +9,7 @@ const config = [
         output: {
             file: 'build/index.js',
             format: 'es',
-            sourcemap: true,
+            sourcemap: false,
             compact: true,
         },
         plugins: [

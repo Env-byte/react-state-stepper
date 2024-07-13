@@ -14,7 +14,7 @@
   },
   "url": "https://github.com/Env-byte/react-state-stepper",
   "engines": {
-    "node": "20"
+    "node": ">=18"
   },
   "keywords": [
     "react",
