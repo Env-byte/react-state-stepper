@@ -33,7 +33,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm clean-install
+          npm ci
+          npm run test
           npm run build
 
       - name: Install production dependencies

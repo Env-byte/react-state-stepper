@@ -14,7 +14,7 @@ const config = [
         },
         plugins: [
             typescript({
-                tsconfig: './tsconfig.json',
+                tsconfig: './tsconfig.build.json',
                 declaration: true,
                 declarationDir: 'build',
             }),

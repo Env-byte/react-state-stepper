@@ -5,8 +5,8 @@
   "types": "build/index.d.ts",
   "private": false,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c --bundleConfigAsCjs",
+    "test": "vitest --no-watch",
     "dev": "nodemon --exec 'npm run build' --watch src --ext ts"
   },
   "repository": {
@@ -27,13 +27,15 @@
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@testing-library/dom": "^10.2.0",
+    "@testing-library/dom": "^10.3.2",
     "@testing-library/react": "^16.0.0",
+    "@testing-library/user-event": "^14.5.2",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.15.0",
     "@typescript-eslint/parser": "^7.15.0",
+    "@vitest/coverage-istanbul": "^2.0.3",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^18.0.0",
@@ -42,13 +44,15 @@
     "eslint-plugin-jsx-a11y": "^6.9.0",
     "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
+    "istanbul": "^0.4.5",
+    "jsdom": "^24.1.0",
     "nodemon": "^3.1.4",
     "prettier": "^3.3.2",
     "rollup": "^4.18.0",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^6.1.1",
     "typescript": "^5.5.2",
-    "vitest": "^1.6.0"
+    "vitest": "^2.0.3"
   },
   "peerDependencies": {
     "react": "^18.3.1"

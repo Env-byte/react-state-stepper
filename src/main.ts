@@ -1,12 +1,6 @@
-import {
-    getStep,
-    getStepByOffset,
-    isStepObject,
-    StepConfig,
-    UseStepProps,
-    useStepState,
-} from './step';
-import { useTimer } from './useTimer';
+import { isStepObject, StepConfig, UseStepProps, useStepState } from './step';
+import { useMeta, useStep, useTimer } from './hooks';
+import { useEffect, useMemo, useRef } from 'react';
 
 interface StateStepperReturn<Name extends string> {
     current: Name;
@@ -26,23 +20,35 @@ export const useStateStepper = <Name extends string>({
     steps,
     loop,
 }: UseStateStepperProps<Name>): StateStepperReturn<Name> => {
-    const [step, next, previous] = useStepState({ steps, loop });
-    const current = getStep({ steps, current: step });
+    const stepsRef = useRef(steps);
+
+    const [step, next, previous] = useStepState({
+        steps: stepsRef.current,
+        loop,
+    });
+
+    useEffect(() => {
+        stepsRef.current = steps;
+    }, [steps]);
+
+    const current = useStep({
+        stepsRef,
+        step,
+    });
 
     if (current === undefined) throw new Error(`Step '${step}' not found`);
 
-    const timer = isStepObject(current) ? current.timer : undefined;
+    useTimer({ current, onEnd: next });
 
-    useTimer({ timer, onEnd: next });
+    const meta = useMeta({ current, loop, stepsRef });
 
-    return {
-        current: step,
-        meta: {
-            current: isStepObject(current) ? current : { name: current },
-            previous: getStepByOffset({ steps, current, offset: -1, loop }),
-            next: getStepByOffset({ steps, current, offset: +1, loop }),
-        },
-        next,
-        previous,
-    };
+    return useMemo(
+        () => ({
+            current: step,
+            meta,
+            next,
+            previous,
+        }),
+        [step, next, previous, meta]
+    );
 };

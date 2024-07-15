@@ -21,4 +21,5 @@ jobs:
           NODE_ENV: development
         run: |
           npm ci
+          npm run test
           npm run build
