@@ -10,7 +10,7 @@ export interface StepConfig<Name extends string> {
 export type Step<Name extends string> = Name | StepConfig<Name>;
 
 export const isStepObject = <Name extends string>(
-    item: Step<Name>
+    item: Step<Name> | undefined
 ): item is StepConfig<Name> => {
     return typeof item === 'object';
 };
