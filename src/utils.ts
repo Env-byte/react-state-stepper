@@ -16,7 +16,9 @@ export namespace utils {
      * type Steps = GetName<typeof steps>; // a | b | c
      * @param steps
      */
-    export const create = <Name extends string>(steps: Step<Name>[]) => {
+    export const create = <Name extends string>(
+        steps: Step<Name>[]
+    ): Step<Name>[] => {
         return steps;
     };
 }
