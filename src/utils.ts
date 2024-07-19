@@ -1,5 +1,8 @@
 import { Step } from './step';
 
+/**
+ * Gets a union of the name of the steps from the array of steps.
+ */
 export type GetName<T extends Step<string>[]> = T extends Step<infer U>[]
     ? U
     : never;
