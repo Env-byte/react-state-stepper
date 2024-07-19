@@ -5,7 +5,7 @@ A simple state stepper component for React, which is manually or timer controlle
 ### Installation
 
 ```bash
-npm install state-stepper
+npm install react-state-stepper
 ```
 
 ### Manual Usage
