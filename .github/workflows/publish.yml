@@ -27,13 +27,15 @@ jobs:
           persist-credentials: false
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v1
         with:
           node-version: 22
 
       - name: Install dependencies
+        env:
+          NODE_ENV: development
         run: |
-          npm ci
+          npm i
           npm run test
           npm run build
 
@@ -42,7 +44,7 @@ jobs:
           NODE_ENV: production
         run: |
           rm -rf node_modules
-          npm ci
+          npm i
 
       - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
         run: npm audit signatures
